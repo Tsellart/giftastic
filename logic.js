@@ -13,7 +13,7 @@ $("#gifFinder").on("click", function () {
 })
 
 
-$("#topicButtons").on("click", function () {
+function displayGif() {
 
   var thing = $('button').attr('data-person');
   console.log(thing);
@@ -48,5 +48,7 @@ $("#topicButtons").on("click", function () {
         }
       }
     })
-});
+};
+
+$(document).on("click", displayGif);
 
