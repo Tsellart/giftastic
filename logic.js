@@ -2,21 +2,21 @@ var topics = ["Venture Bros","Eating Beans", "Always Sunny", "Memes"]
 
 $(document).ready(function() {
   for (var i = 0; i < topics.length; i++) {
-      $("#topicButtons").append("<button type='button' data-person=' " + topics[i]  + "'class='btn btn-primary' value=' " + topics[i] + "'> " + topics[i] + " </button>");
+      $("#topicButtons").append("<button type='button' data-person=' " + topics[i]  + "'class='btn chicken btn-primary' value=' " + topics[i] + "'> " + topics[i] + " </button>");
   }
 });
 
 $("#gifFinder").on("click", function () {
   event.preventDefault();
   var newButton = $("#searcher").val().trim();
-  $("#topicButtons").append("<button type='button' data-person=' " + newButton  + "'class='btn btn-primary' value=' " + newButton + "'> " + newButton + " </button>");
+  $("#topicButtons").append("<button type='button' data-person='" + newButton  + "'class='btn chicken btn-primary' value=' " + newButton + "'> " + newButton + " </button>");
 })
 
 
-function displayGif() {
+$(document).on("click", ".chicken", function() {
 
-  var thing = $('button').attr('data-person');
-  console.log(thing);
+  var thing = $(this).attr('data-person');
+  console.log("this is the " + thing);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thing +"&api_key=KgZq5GJk3R93RxTjxZQrUMCzl19yCa0U";
 
   $.ajax({
@@ -48,7 +48,7 @@ function displayGif() {
         }
       }
     })
-};
+});
 
-$(document).on("click", displayGif);
+
 
