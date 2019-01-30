@@ -37,18 +37,38 @@ $(document).on("click", ".chicken", function() {
 
           var p = $("<p>").text("Rating: " + rating);
 
-          var thingImage = $("<img>");
+          var thingImage = $("<img class = 'movImage'>");
 
          thingImage.attr("src", results[i].images.fixed_height.url);
+
+         thingImage.attr("data-still", results[i].images.fixed_height_still.url);
+
+         thingImage.attr("data-animate", results[i].images.fixed_height.url);
+
+         thingImage.attr("data-state", "still");
          
          gifDiv.append(p);
          gifDiv.append(thingImage);
 
          $("#gifs-appear-here").prepend(gifDiv);
         }
+        $('.movImage').on('click', function() {
+          var state = $(this).attr('data-state');
+          if (state == 'still') {
+              $(this).attr('src', $(this).attr("data-animate"));
+              $(this).attr('data-state', 'animate');
+          } else {
+              $(this).attr('src', $(this).attr("data-still"));
+              $(this).attr('data-state', 'still');
+          }
+        })
+        
       }
     })
+    
 });
+
+
 
 
 
